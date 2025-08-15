@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Defensa de Tesis – Cuenta regresiva</title>
+    <meta name="description" content="Cuenta regresiva, detalles del evento, libro de visitas y galería de fotos para la defensa de PhD." />
+    <meta property="og:title" content="Defensa de Tesis – Cuenta regresiva" />
+    <meta property="og:description" content="Acompáñame en mi defensa. Deja mensajes y comparte fotos." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Tailwind CDN para estilos rápidos en un solo archivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Favicon simple -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>">
+
+    <style>
+      /* Masonry simple usando columns */
+      .masonry { column-count: 1; column-gap: 1rem; }
+      @media (min-width: 640px) { .masonry { column-count: 2; } }
+      @media (min-width: 1024px) { .masonry { column-count: 3; } }
+      .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
+    </style>
+  </head>
+  <body class="bg-gradient-to-b from-sky-50 to-white text-slate-800 dark:from-slate-950 dark:to-slate-900 dark:text-slate-100 min-h-screen">
+    <header class="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between">
+      <h1 class="text-xl font-semibold">Defensa de PhD</h1>
+      <button id="themeToggle" class="px-3 py-2 rounded-xl text-sm bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow">
+        Tema
+      </button>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 pb-20">
+      <!-- Hero con cuenta regresiva -->
+      <section class="rounded-3xl p-8 md:p-12 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+        <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div class="flex-1">
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Nos vemos en la defensa</h2>
+            <p class="mt-2 text-slate-600 dark:text-slate-300">Acompáñame y deja un mensaje en el libro de visitas. Comparte tus fotos en la galería.</p>
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <a id="addToCalendar" href="#" class="px-4 py-2 rounded-xl bg-sky-600 text-white shadow hover:bg-sky-700">Añadir al calendario (.ics)</a>
+              <a id="uploadLink" target="_blank" rel="noopener" class="px-4 py-2 rounded-xl bg-slate-900 text-white shadow hover:bg-slate-700">Sube tus fotos (PR)</a>
+            </div>
+            <p class="mt-3 text-xs text-slate-500">Las fotos se guardan en este repositorio de GitHub mediante Pull Request.</p>
+          </div>
+          <div class="w-full md:w-auto">
+            <!--
+              ⏱️ CONFIGURA la fecha y zona horaria aquí. Ejemplos válidos:
+              2025-10-03T14:00:00+02:00  (3 oct 2025 14:00 CEST)
+              2025-10-03T12:00:00Z       (UTC)
+            -->
+            <div id="countdown" data-datetime="2025-10-03T14:00:00+02:00" class="grid grid-cols-4 gap-2 text-center">
+              <div class="rounded-2xl bg-slate-900 text-white p-4"><div id="dd" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">días</div></div>
+              <div class="rounded-2xl bg-slate-900 text-white p-4"><div id="hh" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">horas</div></div>
+              <div class="rounded-2xl bg-slate-900 text-white p-4"><div id="mm" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">min</div></div>
+              <div class="rounded-2xl bg-slate-900 text-white p-4"><div id="ss" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">seg</div></div>
+            </div>
+            <p class="mt-2 text-xs text-slate-500 text-center">Actualiza <code>data-datetime</code> con tu fecha real.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Detalles del evento -->
+      <section class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+          <h3 class="text-xl font-semibold">Detalles</h3>
+          <ul class="mt-3 space-y-2 text-slate-700 dark:text-slate-300">
+            <li><strong>Doctorando/a:</strong> Tu nombre aquí</li>
+            <li><strong>Título:</strong> Tu título de tesis aquí</li>
+            <li><strong>Fecha:</strong> <span id="eventDateLabel">3 octubre 2025, 14:00</span></li>
+            <li><strong>Lugar:</strong> Aula, Universidad — Ciudad</li>
+          </ul>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-400">Después habrá brindis. Familia y amistades bienvenidas.</p>
+        </div>
+        <div class="rounded-3xl overflow-hidden bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+          <!-- Sustituye la ubicación del mapa si quieres mostrarlo -->
+          <iframe title="Mapa" width="100%" height="100%" style="min-height:220px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.704!2d4.9041!3d52.3676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1ses!2s!4v0000000000000"></iframe>
+        </div>
+      </section>
+
+      <!-- Galería -->
+      <section class="mt-10">
+        <div class="flex items-baseline justify-between gap-2">
+          <h3 class="text-xl font-semibold">Galería de fotos</h3>
+          <a id="uploadLinkTop" target="_blank" rel="noopener" class="text-sm text-sky-700 hover:underline">Subir fotos (PR)</a>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm">Las imágenes se cargan desde la carpeta <code>/gallery</code> de este repositorio.</p>
+        <div id="gallery" class="masonry mt-4"></div>
+        <p id="galleryHint" class="hidden mt-3 text-sm text-slate-500">Tip: si no ves fotos aun, sube la primera con el botón de arriba.</p>
+      </section>
+
+      <!-- Libro de visitas (mensajes y fotos) con giscus -->
+      <section class="mt-12 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+        <h3 class="text-xl font-semibold mb-2">Libro de visitas</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Inicia sesión con GitHub para dejar un mensaje. Puedes arrastrar imágenes a tu comentario.</p>
+
+        <!--
+          🧩 CÓMO ACTIVAR GISCUS (comentarios vía GitHub Discussions):
+          1) Instala la app en https://github.com/apps/giscus
+          2) Crea un repo público para el sitio si no existe
+          3) En el repo, crea una Discussion Category (por ejemplo, "Guestbook")
+          4) Rellena los atributos data-* de abajo con tus valores reales:
+             - data-repo="OWNER/REPO"
+             - data-repo-id, data-category-id (obténlos en https://giscus.app)
+             - data-mapping puede ser "specific" + data-term="Guestbook" o similar
+          5) Cambia data-theme a "dark" si quieres forzar tema oscuro
+        -->
+        <script src="https://giscus.app/client.js"
+          data-repo="OWNER/REPO"
+          data-repo-id="REPO_ID"
+          data-category="Guestbook"
+          data-category-id="CATEGORY_ID"
+          data-mapping="specific"
+          data-term="Libro de visitas"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          crossorigin="anonymous"
+          async>
+        </script>
+        <noscript class="text-sm text-red-600">Activa JavaScript para ver y publicar mensajes con giscus.</noscript>
+      </section>
+
+      <!-- Créditos mínimos -->
+      <footer class="mt-12 text-center text-xs text-slate-500">
+        Hecho con GitHub Pages. Personaliza libremente este archivo.
+      </footer>
+    </main>
+
+    <script>
+      // =====================
+      // Configuración GitHub
+      // =====================
+      // Cambia estos valores para tu repo y rama
+      const GH_OWNER = "OWNER"; // p.ej. tu-usuario
+      const GH_REPO  = "REPO";  // p.ej. defensa-phd
+      const GH_BRANCH = "main";  // o "gh-pages" si publicas desde esa rama
+      const GALLERY_PATH = "gallery";
+
+      // Construye el enlace de subida vía interfaz web de GitHub (crea PR si no tienes permisos)
+      const uploadUrl = `https://github.com/${GH_OWNER}/${GH_REPO}/upload/${GH_BRANCH}/${GALLERY_PATH}`;
+      document.getElementById("uploadLink").href = uploadUrl;
+      document.getElementById("uploadLinkTop").href = uploadUrl;
+
+      // =====================
+      // Cuenta regresiva
+      // =====================
+      const cd = document.getElementById('countdown');
+      const target = new Date(cd.dataset.datetime);
+      const dd = document.getElementById('dd');
+      const hh = document.getElementById('hh');
+      const mm = document.getElementById('mm');
+      const ss = document.getElementById('ss');
+      const label = document.getElementById('eventDateLabel');
+      label.textContent = target.toLocaleString('es-ES', { dateStyle: 'long', timeStyle: 'short' });
+
+      function pad(n){ return String(n).padStart(2,'0'); }
+      function tick(){
+        const now = new Date();
+        const diff = Math.max(0, target - now);
+        const d = Math.floor(diff / (1000*60*60*24));
+        const h = Math.floor((diff / (1000*60*60)) % 24);
+        const m = Math.floor((diff / (1000*60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+        dd.textContent = d;
+        hh.textContent = pad(h);
+        mm.textContent = pad(m);
+        ss.textContent = pad(s);
+      }
+      tick();
+      setInterval(tick, 1000);
+
+      // =====================
+      // Archivo .ics (Añadir al calendario)
+      // =====================
+      document.getElementById('addToCalendar').addEventListener('click', (e) => {
+        e.preventDefault();
+        const dtStart = target.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        const dtEndDate = new Date(target.getTime() + 2*60*60*1000); // duración 2h
+        const dtEnd = dtEndDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        const ics = [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Defensa PhD//ES',
+          'BEGIN:VEVENT',
+          `DTSTART:${dtStart}`,
+          `DTEND:${dtEnd}`,
+          'SUMMARY:Defensa de tesis',
+          'DESCRIPTION:Defensa de tesis doctoral',
+          'LOCATION:Aula, Universidad — Ciudad',
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+        const blob = new Blob([ics], { type: 'text/calendar' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'defensa.ics';
+        document.body.appendChild(a);
+        a.click();
+        URL.revokeObjectURL(url);
+        a.remove();
+      });
+
+      // =====================
+      // Galería desde el API de GitHub
+      // =====================
+      async function loadGallery() {
+        const galleryEl = document.getElementById('gallery');
+        const hint = document.getElementById('galleryHint');
+        const api = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GALLERY_PATH}?ref=${GH_BRANCH}`;
+        try {
+          const res = await fetch(api);
+          if (!res.ok) throw new Error('No se pudo cargar la galería');
+          const files = await res.json();
+          const imgs = (Array.isArray(files) ? files : [])
+            .filter(f => f.type === 'file' && /\.(png|jpe?g|gif|webp|avif)$/i.test(f.name));
+          if (imgs.length === 0) hint.classList.remove('hidden');
+          imgs.forEach(({ name, download_url }) => {
+            const fig = document.createElement('figure');
+            fig.className = 'masonry-item rounded-2xl overflow-hidden shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50 bg-white/70 dark:bg-slate-800/60';
+            const img = document.createElement('img');
+            img.src = download_url;
+            img.alt = name;
+            img.loading = 'lazy';
+            img.className = 'w-full h-auto block';
+            fig.appendChild(img);
+            galleryEl.appendChild(fig);
+          });
+        } catch (err) {
+          hint.textContent = 'No se pudo cargar la galería. Revisa que el repo sea público y exista la carpeta /gallery.';
+          hint.classList.remove('hidden');
+        }
+      }
+      loadGallery();
+
+      // =====================
+      // Tema claro/oscuro
+      // =====================
+      const root = document.documentElement;
+      function applyTheme(initial=false){
+        const pref = localStorage.getItem('theme');
+        if (pref === 'dark' || (!pref && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          root.classList.add('dark');
+        } else {
+          root.classList.remove('dark');
+        }
+        if (!initial && window.giscus?.setConfig) {
+          const theme = root.classList.contains('dark') ? 'dark' : 'light';
+          window.giscus.setConfig({ theme });
+        }
+      }
+      applyTheme(true);
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const nowDark = !root.classList.contains('dark');
+        localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+        applyTheme();
+      });
+    </script>
+  </body>
+</html>
