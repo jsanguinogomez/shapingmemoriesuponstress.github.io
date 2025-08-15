@@ -1,1 +1,0 @@
-# shapingmemoriesuponstress.github.io
