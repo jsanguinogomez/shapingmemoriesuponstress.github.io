@@ -4,34 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shaping Memories Upon Stress – PhD Defense</title>
-    <meta name="description" content="Countdown, event details, guestbook, and photo gallery for my PhD defense." />
+    <meta name="description" content="Countdown, event details, and a guestbook anyone can sign for my PhD defense." />
     <meta property="og:title" content="Shaping Memories Upon Stress – PhD Defense" />
-    <meta property="og:description" content="Join my PhD defense, leave a message, and share photos." />
+    <meta property="og:description" content="Join my PhD defense, sign the guestbook, and share your photos." />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0ea5e9" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>">
+
     <style>
-      body {
-        background: url('background/sunset-field.jpeg.jpeg') no-repeat center center fixed;
+      /* Background image */
+      body{
+        background: url('background/sunset-field.jpeg') no-repeat center center fixed;
         background-size: cover;
       }
-      .bg-white\/70 {
-        background-color: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(4px);
-      }
-      .dark\:bg-slate-800\/60 {
-        background-color: rgba(30, 41, 59, 0.85);
-        backdrop-filter: blur(4px);
-      }
-      .countdown-card {
-        background-color: rgba(15, 23, 42, 0.85);
-        backdrop-filter: blur(4px);
-      }
-      .masonry { column-count: 1; column-gap: 1rem; }
-      @media (min-width: 640px) { .masonry { column-count: 2; } }
-      @media (min-width: 1024px) { .masonry { column-count: 3; } }
-      .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
+
+      /* Readable “glass” cards */
+      .bg-white\/70{ background-color: rgba(255,255,255,0.85); backdrop-filter: blur(4px); }
+      .dark\:bg-slate-800\/60{ background-color: rgba(30,41,59,0.85); backdrop-filter: blur(4px); }
+
+      /* Countdown cards */
+      .countdown-card{ background-color: rgba(15,23,42,0.85); backdrop-filter: blur(4px); }
+
+      /* Optional masonry if you add a gallery later */
+      .masonry{ column-count:1; column-gap:1rem; }
+      @media (min-width:640px){ .masonry{ column-count:2; } }
+      @media (min-width:1024px){ .masonry{ column-count:3; } }
+      .masonry-item{ break-inside:avoid; margin-bottom:1rem; }
     </style>
   </head>
   <body class="text-slate-800 dark:text-slate-100 min-h-screen">
@@ -43,12 +42,13 @@
     </header>
 
     <main class="max-w-5xl mx-auto px-4 pb-20">
+      <!-- Hero + countdown -->
       <section class="rounded-3xl p-8 md:p-12 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
         <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
           <div class="flex-1">
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Shaping Memories Upon Stress</h2>
             <p class="mt-2 italic text-slate-600 dark:text-slate-300">
-              A behavioral, cellular, synaptic, and molecular perspective on glucocorticoid modulation of learning and memory
+              A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory
             </p>
             <p class="mt-4 text-slate-600 dark:text-slate-300">
               Join my defense, sign the guestbook, and share your photos.
@@ -59,6 +59,7 @@
             </div>
             <p class="mt-3 text-xs text-slate-500">Photos are stored in this GitHub repository via Pull Request.</p>
           </div>
+
           <div class="w-full md:w-auto">
             <div id="countdown" data-datetime="2025-09-26T13:00:00+02:00" class="grid grid-cols-4 gap-2 text-center">
               <div class="countdown-card rounded-2xl text-white p-4"><div id="dd" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">days</div></div>
@@ -70,12 +71,13 @@
         </div>
       </section>
 
+      <!-- Event details + map -->
       <section class="mt-10 grid md:grid-cols-3 gap-6">
         <div class="md:col-span-2 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
           <h3 class="text-xl font-semibold">Event Details</h3>
           <ul class="mt-3 space-y-2 text-slate-700 dark:text-slate-300">
             <li><strong>PhD Candidate:</strong> Jeniffer Sanguino Gomez</li>
-            <li><strong>Title:</strong> Shaping memories upon stress – A behavioral, cellular, synaptic, and molecular perspective on glucocorticoid modulation of learning and memory</li>
+            <li><strong>Title:</strong> Shaping memories upon stress – A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</li>
             <li><strong>Date:</strong> <span id="eventDateLabel"></span></li>
             <li><strong>Location:</strong> Agnietenkapel – University of Amsterdam, Oudezijds Voorburgwal 229-231, Amsterdam</li>
           </ul>
@@ -86,29 +88,44 @@
         </div>
       </section>
 
+      <!-- Guestbook (no GitHub account needed) -->
       <section class="mt-12 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
         <h3 class="text-xl font-semibold mb-2">Guestbook</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Sign in with GitHub to leave a message. You can attach images to your comments.</p>
+        <p class="text-sm text-slate-600 dark:text-slate-400">No login needed. Leave a short message for Jeniffer.</p>
 
-        <script src="https://giscus.app/client.js"
-          data-repo="jsanguinogomez/shapingmemoriesuponstress.github.io"
-          data-repo-id="R_kgDOPeVLQA"
-          data-category="Guestbook"
-          data-category-id="DIC_kwDOPeVLQM4CuNLm"
-          data-mapping="specific"
-          data-term="Guestbook"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="preferred_color_scheme"
-          crossorigin="anonymous"
-          async>
-        </script>
-        <noscript class="text-sm text-red-600">Enable JavaScript to view and post messages via giscus.</noscript>
+        <!-- Formspree guestbook -->
+        <form id="guestbook" action="https://formspree.io/f/mjkozpzq" method="POST" class="mt-4 space-y-4">
+          <!-- spam honeypot -->
+          <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+          <!-- email subject -->
+          <input type="hidden" name="_subject" value="New guestbook entry">
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="text-sm">Your name</span>
+              <input required name="name" type="text" class="mt-1 w-full rounded-xl border border-slate-300 p-3 bg-white/80" placeholder="Name">
+            </label>
+            <label class="block">
+              <span class="text-sm">Your email (optional)</span>
+              <input name="email" type="email" class="mt-1 w-full rounded-xl border border-slate-300 p-3 bg-white/80" placeholder="you@example.com">
+            </label>
+          </div>
+
+          <label class="block">
+            <span class="text-sm">Message</span>
+            <textarea required name="message" rows="4" class="mt-1 w-full rounded-xl border border-slate-300 p-3 bg-white/80" placeholder="Write your note..."></textarea>
+          </label>
+
+          <div class="flex items-center justify-between gap-3">
+            <button type="submit" class="px-4 py-2 rounded-xl bg-sky-600 text-white shadow hover:bg-sky-700">Send message</button>
+            <span id="formStatus" class="text-sm text-slate-500"></span>
+          </div>
+        </form>
       </section>
     </main>
 
     <script>
+      // Upload link (photos to /gallery via PR)
       const GH_OWNER = "jsanguinogomez";
       const GH_REPO  = "shapingmemoriesuponstress.github.io";
       const GH_BRANCH = "main";
@@ -116,6 +133,7 @@
       const uploadUrl = `https://github.com/${GH_OWNER}/${GH_REPO}/upload/${GH_BRANCH}/${GALLERY_PATH}`;
       document.getElementById("uploadLink").href = uploadUrl;
 
+      // Countdown + event label
       const cd = document.getElementById('countdown');
       const target = new Date(cd.dataset.datetime);
       const dd = document.getElementById('dd');
@@ -134,27 +152,64 @@
         mm.textContent = pad(Math.floor((diff / (1000*60)) % 60));
         ss.textContent = pad(Math.floor((diff / 1000) % 60));
       }
-      tick();
-      setInterval(tick, 1000);
+      tick(); setInterval(tick, 1000);
 
+      // Add-to-calendar (.ics)
+      document.getElementById('addToCalendar').addEventListener('click', (e) => {
+        e.preventDefault();
+        const dtStart = target.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        const dtEndDate = new Date(target.getTime() + 2*60*60*1000);
+        const dtEnd = dtEndDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+        const ics = [
+          'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//PhD Defense//EN','BEGIN:VEVENT',
+          `DTSTART:${dtStart}`,`DTEND:${dtEnd}`,
+          'SUMMARY:PhD Defense – Shaping Memories Upon Stress',
+          'DESCRIPTION:A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory',
+          'LOCATION:Agnietenkapel – University of Amsterdam, Oudezijds Voorburgwal 229-231, Amsterdam',
+          'END:VEVENT','END:VCALENDAR'
+        ].join('\r\n');
+        const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+        const a = Object.assign(document.createElement('a'), { href: url, download: 'phd_defense.ics' });
+        document.body.appendChild(a); a.click(); URL.revokeObjectURL(url); a.remove();
+      });
+
+      // Theme toggle
       const root = document.documentElement;
       function applyTheme(initial=false){
         const pref = localStorage.getItem('theme');
-        if (pref === 'dark' || (!pref && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          root.classList.add('dark');
-        } else {
-          root.classList.remove('dark');
-        }
-        if (!initial && window.giscus?.setConfig) {
-          const theme = root.classList.contains('dark') ? 'dark' : 'light';
-          window.giscus.setConfig({ theme });
-        }
+        if (pref === 'dark' || (!pref && window.matchMedia('(prefers-color-scheme: dark)').matches)) root.classList.add('dark');
+        else root.classList.remove('dark');
       }
       applyTheme(true);
       document.getElementById('themeToggle').addEventListener('click', () => {
         const nowDark = !root.classList.contains('dark');
         localStorage.setItem('theme', nowDark ? 'dark' : 'light');
         applyTheme();
+      });
+
+      // Guestbook submit (Formspree)
+      const form = document.getElementById('guestbook');
+      const status = document.getElementById('formStatus');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = 'Sending...';
+        try{
+          const res = await fetch(form.action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+          if (res.ok){
+            form.reset();
+            status.textContent = 'Thanks for your message!';
+          } else {
+            const data = await res.json().catch(()=>({}));
+            status.textContent = data?.errors ? data.errors.map(x=>x.message).join(', ') : 'Something went wrong. Please try again.';
+          }
+        } catch {
+          status.textContent = 'Network error. Please try again.';
+        }
+        setTimeout(()=> status.textContent = '', 5000);
       });
     </script>
   </body>
