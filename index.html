@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /> 
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>🎓 PhD Defense - Shaping Memories Upon Stress</title>
   <style>
     :root{
       --ink:#4d4d4d;
-      --card-bg:rgba(255,255,255,.92); /* less transparent */
+      --card-bg:rgba(255,255,255,.92);
       --ring:rgba(0,0,0,.08);
       --shadow:0 12px 28px rgba(0,0,0,.12);
       --radius:28px;
@@ -16,7 +16,6 @@
       --charcoal:#4d4d4d;
     }
 
-    /* Page background */
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
@@ -24,14 +23,12 @@
       background:url('background/sunset-field.jpeg') center/cover fixed no-repeat;
     }
 
-    /* Layout */
     header{
-      max-width:1200px; margin:24px auto; padding:0 16px;
+      max-width:1100px; margin:24px auto; padding:0 16px;
       font-weight:700; color:var(--ink);
     }
-    .wrap{ max-width:1200px; margin:0 auto; padding:0 16px 48px; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:0 16px 48px; }
 
-    /* Card look */
     .card{
       background:var(--card-bg);
       border:1px solid var(--ring);
@@ -43,7 +40,6 @@
       margin-top:28px;
     }
 
-    /* Hero: title + countdown side by side */
     .hero{
       display:grid;
       grid-template-columns:1fr auto;
@@ -54,7 +50,8 @@
     .subtitle{
       margin:0; font-style:italic; line-height:1.5; color:#5e5e5e;
     }
-    .subtitle .br{ display:block; } /* force two lines on wide screens */
+    .subtitle .br{ display:block; }
+    .extra-sub{ margin-top:10px; font-weight:500; color:var(--ink); }
 
     .countdown{
       display:flex; gap:12px; align-items:center; justify-content:flex-end; flex-wrap:wrap;
@@ -66,7 +63,6 @@
     .tbox .num{ font-size:28px; font-weight:800; line-height:1; }
     .tbox .lab{ font-size:12px; opacity:.9; margin-top:4px; }
 
-    /* Action buttons */
     .actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
     .btn{
       display:inline-block; padding:12px 18px; border-radius:14px;
@@ -77,11 +73,9 @@
     .btn.gray{ background:var(--charcoal); }
     .btn.gray:hover{ filter:brightness(1.05); }
 
-    /* Details + map side by side */
     .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
     iframe{ width:100%; height:100%; min-height:320px; border:0; border-radius:20px; }
 
-    /* Intro split: photo left, text right */
     .intro{ display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center; }
     .intro img{
       width:220px; height:220px; object-fit:cover; border-radius:50%;
@@ -89,10 +83,8 @@
     }
     .intro p{ margin:0; line-height:1.6; }
 
-    /* Gallery embed */
     .gallery iframe{ height:520px; border-radius:20px; }
 
-    /* Guestbook form */
     form{ display:grid; gap:12px; }
     input, textarea{
       padding:12px 14px; border-radius:12px; border:1px solid #d7d7d7; background:#fff; color:var(--ink);
@@ -101,7 +93,6 @@
     .submit{ background:var(--orange); color:#fff; padding:12px 16px; border-radius:12px; font-weight:700; }
     .submit:hover{ background:var(--orange-hover); }
 
-    /* Responsive */
     @media (max-width:900px){
       .hero{ grid-template-columns:1fr; }
       .countdown{ justify-content:flex-start; }
@@ -123,6 +114,7 @@
           A behavioral, cellular, synaptic and molecular perspective
           <span class="br">on glucocorticoid modulation of learning and memory</span>
         </p>
+        <p class="extra-sub">Upload your pictures, leave a message, help me make it an unforgettable day!</p>
 
         <div class="actions">
           <a href="event.ics" class="btn orange">Add to Calendar (.ics)</a>
@@ -192,7 +184,6 @@
   </main>
 
   <script>
-    // countdown
     const target = new Date("September 26, 2025 13:00:00").getTime();
     const dd = document.getElementById('dd');
     const hh = document.getElementById('hh');
