@@ -1,228 +1,174 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>   
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Shaping Memories Upon Stress – PhD Defense</title>
-    <meta name="description" content="Countdown, event details, photos, and a guestbook anyone can sign." />
-    <meta property="og:title" content="Shaping Memories Upon Stress – PhD Defense" />
-    <meta property="og:description" content="Join my PhD defense, see the photos, and leave a message." />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#f4a300" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PhD Defense - Shaping Memories Upon Stress</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('background/sunset-field.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #4d4d4d;
+    }
+    header {
+      padding: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 1rem auto;
+      background: rgba(255,255,255,0.85);
+      padding: 2rem;
+      border-radius: 20px;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    .countdown {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .countdown div {
+      background: #4d4d4d;
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      min-width: 70px;
+    }
+    button, .btn-link {
+      background: #f4a300;
+      border: none;
+      padding: 0.6rem 1rem;
+      margin: 0.3rem;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+    button:hover, .btn-link:hover {
+      opacity: 0.85;
+    }
+    .event-details {
+      margin-top: 2rem;
+    }
+    iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    input, textarea {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    input[type="submit"] {
+      background: #f4a300;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    input[type="submit"]:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <header>PhD Defense</header>
+  <div class="container">
+    <h1>Shaping Memories Upon Stress</h1>
+    <p><em>A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</em></p>
+    <p>Join my defense, see the photos and sign the guestbook.</p>
 
-    <style>
-      body{
-        background: url('background/sunset-field.jpeg') no-repeat center center fixed;
-        background-size: cover;
-        color: #4d4d4d;
+    <div class="countdown" id="countdown">
+      <div><span id="days"></span><br>days</div>
+      <div><span id="hours"></span><br>hours</div>
+      <div><span id="minutes"></span><br>min</div>
+      <div><span id="seconds"></span><br>sec</div>
+    </div>
+
+    <a href="event.ics" class="btn-link">Add to Calendar (.ics)</a>
+    <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d"
+       target="_blank" class="btn-link">Upload Photos (Drive)</a>
+  </div>
+
+  <div class="container event-details">
+    <h2>Event Details</h2>
+    <p><b>PhD Candidate:</b> Jeniffer Sanguino Gomez</p>
+    <p><b>Title:</b> Shaping memories upon stress – A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</p>
+    <p><b>Date:</b> Friday, September 26, 2025 at 1:00 PM</p>
+    <p><b>Location:</b> University of Amsterdam, Agnietenkapel</p>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.123456!2d4.8936!3d52.3728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609c123456789%3A0xabcdef!2sAgnietenkapel!5e0!3m2!1sen!2snl!4v0000000000000"
+      width="600" height="450" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+
+  <div class="container">
+    <h2>Photos</h2>
+    <p class="text-sm mt-1">
+      Upload your favorite memory photos to this
+      <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d"
+         target="_blank" rel="noopener"
+         class="underline" style="color:#f4a300">
+        Google Drive folder
+      </a>.
+    </p>
+
+    <iframe 
+      src="https://drive.google.com/embeddedfolderview?id=1plug11j40-uFWPTEp6U-2XKbLoOZB01d#grid"
+      width="100%" height="400">
+    </iframe>
+  </div>
+
+  <div class="container">
+    <h2>Guestbook</h2>
+    <form action="https://formspree.io/f/mjkozpzq" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+  </div>
+
+  <script>
+    // Countdown Timer
+    const eventDate = new Date("September 26, 2025 13:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      if (distance < 0) {
+        countdown.innerHTML = "Event has started!";
+        return;
       }
-      .card{
-        background: rgba(255,255,255,.85);
-        backdrop-filter: blur(4px);
-        border-radius: 1.5rem;
-        box-shadow: 0 8px 24px rgba(0,0,0,.12);
-        border: 1px solid rgba(0,0,0,.06);
-      }
-      h1,h2,h3,h4,h5,h6, p, span, li, a, small, strong{ color:#4d4d4d; }
-
-      .btn-orange{
-        background:#f4a300; color:#fff !important;
-        padding:.6rem 1rem; border-radius:.9rem;
-        box-shadow:0 6px 14px rgba(244,163,0,.35);
-        transition:transform .05s ease, background .2s ease;
-      }
-      .btn-orange:hover{ background:#e59400; }
-      .btn-orange:active{ transform:translateY(1px); }
-
-      .btn-gray{
-        background:#4d4d4d; color:#fff !important;
-        padding:.6rem 1rem; border-radius:.9rem;
-        box-shadow:0 6px 14px rgba(77,77,77,.25);
-      }
-      .btn-gray:hover{ background:#3f3f3f; }
-
-      .countdown-card{
-        background:#4d4d4d; color:#fff;
-        border-radius:1rem; padding:1rem; text-align:center;
-      }
-      .map-wrap{ overflow:hidden; border-radius:1.5rem; }
-      input[type="text"], input[type="email"], textarea{
-        background:rgba(255,255,255,.9);
-        border:1px solid rgba(0,0,0,.12);
-        border-radius:.9rem; padding:.75rem; width:100%; color:#4d4d4d;
-      }
-      label span{ color:#4d4d4d; }
-      .container{ max-width:72rem; margin:0 auto; padding:0 1rem; }
-      .section{ margin-top:2.5rem; }
-    </style>
-  </head>
-
-  <body class="min-h-screen">
-    <header class="container py-6 flex items-center justify-between">
-      <h1 class="text-xl font-semibold">PhD Defense</h1>
-    </header>
-
-    <main class="container pb-20">
-      <!-- Hero + countdown -->
-      <section class="card p-8 md:p-12">
-        <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
-          <div class="flex-1">
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Shaping Memories Upon Stress</h2>
-            <p class="mt-2 italic">
-              A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory
-            </p>
-            <p class="mt-4">Join my defense, see the photos, and sign the guestbook.</p>
-
-            <div class="mt-6 flex flex-wrap items-center gap-3">
-              <a id="addToCalendar" href="#" class="btn-orange">Add to Calendar (.ics)</a>
-              <!-- now opens your Google Drive folder -->
-              <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d"
-                 target="_blank" rel="noopener" class="btn-gray">Upload Photos (Drive)</a>
-            </div>
-          </div>
-
-          <div class="w-full md:w-auto">
-            <div id="countdown" data-datetime="2025-09-26T13:00:00+02:00" class="grid grid-cols-4 gap-2 text-center">
-              <div class="countdown-card"><div id="dd" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">days</div></div>
-              <div class="countdown-card"><div id="hh" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">hours</div></div>
-              <div class="countdown-card"><div id="mm" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">min</div></div>
-              <div class="countdown-card"><div id="ss" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">sec</div></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Event details + map -->
-      <section class="section grid md:grid-cols-3 gap-6">
-        <div class="card p-6 md:col-span-2">
-          <h3 class="text-xl font-semibold">Event Details</h3>
-          <ul class="mt-3 space-y-2">
-            <li><strong>PhD Candidate:</strong> Jeniffer Sanguino Gomez</li>
-            <li><strong>Title:</strong> Shaping memories upon stress – A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</li>
-            <li><strong>Date:</strong> <span id="eventDateLabel"></span></li>
-            <li><strong>Location:</strong> Agnietenkapel – University of Amsterdam, Oudezijds Voorburgwal 229-231, Amsterdam</li>
-          </ul>
-        </div>
-        <div class="card map-wrap">
-          <iframe title="Map" width="100%" height="100%" style="min-height:220px" loading="lazy"
-            src="https://www.google.com/maps?q=Agnietenkapel%20University%20of%20Amsterdam%20Oudezijds%20Voorburgwal%20229-231%20Amsterdam&output=embed"></iframe>
-        </div>
-      </section>
-
-      <!-- Photos (Google Drive embed) -->
-      <section class="section card p-6">
-        <h3 class="text-xl font-semibold">Photos</h3>
-        <p class="text-sm mt-1">This live gallery loads from the shared Google Drive folder.</p>
-        <iframe
-          src="https://drive.google.com/embeddedfolderview?id=1plug11j40-uFWPTEp6U-2XKbLoOZB01d#grid"
-          style="width:100%; height:520px; border:0; margin-top:1rem; border-radius:1rem; overflow:hidden;">
-        </iframe>
-      </section>
-
-      <!-- Guestbook -->
-      <section class="section card p-6">
-        <h3 class="text-xl font-semibold mb-2">Guestbook</h3>
-        <p class="text-sm">No login needed. Leave a short message for Jeniffer.</p>
-
-        <form id="guestbook" action="https://formspree.io/f/mjkozpzq" method="POST" class="mt-4 space-y-4">
-          <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
-          <input type="hidden" name="_subject" value="New guestbook entry">
-
-          <div class="grid md:grid-cols-2 gap-4">
-            <label class="block">
-              <span class="text-sm">Your name</span>
-              <input required name="name" type="text" placeholder="Name">
-            </label>
-            <label class="block">
-              <span class="text-sm">Your email (optional)</span>
-              <input name="email" type="email" placeholder="you@example.com">
-            </label>
-          </div>
-
-          <label class="block">
-            <span class="text-sm">Message</span>
-            <textarea required name="message" rows="4" placeholder="Write your note..."></textarea>
-          </label>
-
-          <div class="flex items-center justify-between gap-3">
-            <button type="submit" class="btn-orange">Send message</button>
-            <span id="formStatus" class="text-sm opacity-80"></span>
-          </div>
-        </form>
-      </section>
-
-      <footer class="section text-center text-xs opacity-80">
-        Made with GitHub Pages. Customize freely.
-      </footer>
-    </main>
-
-    <script>
-      /* Countdown + event label */
-      const cd = document.getElementById('countdown');
-      const target = new Date(cd.dataset.datetime);
-      const dd = document.getElementById('dd');
-      const hh = document.getElementById('hh');
-      const mm = document.getElementById('mm');
-      const ss = document.getElementById('ss');
-      const label = document.getElementById('eventDateLabel');
-      label.textContent = target.toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' });
-
-      function pad(n){ return String(n).padStart(2,'0'); }
-      function tick(){
-        const now = new Date();
-        const diff = Math.max(0, target - now);
-        dd.textContent = Math.floor(diff / (1000*60*60*24));
-        hh.textContent = pad(Math.floor((diff / (1000*60*60)) % 24));
-        mm.textContent = pad(Math.floor((diff / (1000*60)) % 60));
-        ss.textContent = pad(Math.floor((diff / 1000) % 60));
-      }
-      tick(); setInterval(tick, 1000);
-
-      /* Add-to-calendar (.ics) */
-      document.getElementById('addToCalendar').addEventListener('click', (e) => {
-        e.preventDefault();
-        const dtStart = target.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-        const dtEndDate = new Date(target.getTime() + 2*60*60*1000);
-        const dtEnd = dtEndDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-        const ics = [
-          'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//PhD Defense//EN','BEGIN:VEVENT',
-          `DTSTART:${dtStart}`,`DTEND:${dtEnd}`,
-          'SUMMARY:PhD Defense – Shaping Memories Upon Stress',
-          'DESCRIPTION:A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory',
-          'LOCATION:Agnietenkapel – University of Amsterdam, Oudezijds Voorburgwal 229-231, Amsterdam',
-          'END:VEVENT','END:VCALENDAR'
-        ].join('\r\n');
-        const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
-        const a = Object.assign(document.createElement('a'), { href: url, download: 'phd_defense.ics' });
-        document.body.appendChild(a); a.click(); URL.revokeObjectURL(url); a.remove();
-      });
-
-      /* Guestbook submit (Formspree) */
-      const form = document.getElementById('guestbook');
-      const status = document.getElementById('formStatus');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        status.textContent = 'Sending...';
-        try{
-          const res = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: new FormData(form)
-          });
-          if (res.ok){
-            form.reset();
-            status.textContent = 'Thanks for your message!';
-          } else {
-            const data = await res.json().catch(()=>({}));
-            status.textContent = data?.errors ? data.errors.map(x=>x.message).join(', ') : 'Something went wrong.';
-          }
-        } catch {
-          status.textContent = 'Network error. Please try again.';
-        }
-        setTimeout(()=> status.textContent = '', 5000);
-      });
-    </script>
-  </body>
+      daysEl.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+      hoursEl.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      minutesEl.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      secondsEl.innerText = Math.floor((distance % (1000 * 60)) / 1000);
+    }
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
 </html>
