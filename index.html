@@ -1,201 +1,210 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PhD Defense - Shaping Memories Upon Stress</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎓 PhD Defense - Shaping Memories Upon Stress</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: url('background/sunset-field.jpeg') no-repeat center center fixed;
+      background: url('background/722404c0-7f1d-4f6b-9ed8-cfec84416eff.png') no-repeat center center fixed;
       background-size: cover;
-      color: #4d4d4d;
+      color: #333;
     }
     header {
-      padding: 1rem;
+      text-align: left;
+      padding: 20px;
+      font-size: 1.2em;
       font-weight: bold;
-      font-size: 1.2rem;
+      color: #4d4d4d;
     }
     .container {
-      max-width: 900px;
-      margin: 1rem auto;
-      background: rgba(255,255,255,0.85);
-      padding: 2rem;
-      border-radius: 20px;
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
     }
     h1 {
-      margin-top: 0;
+      text-align: center;
+      color: #4d4d4d;
+    }
+    .countdown-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
     }
     .countdown {
       display: flex;
-      gap: 1rem;
-      margin: 1rem 0;
+      gap: 15px;
+      flex: 1;
+      justify-content: center;
     }
     .countdown div {
       background: #4d4d4d;
       color: white;
-      padding: 1rem;
+      padding: 15px;
       border-radius: 10px;
       text-align: center;
       min-width: 70px;
     }
-    button, .btn-link {
-      background: #f4a300;
-      border: none;
-      padding: 0.6rem 1rem;
-      margin: 0.3rem;
-      border-radius: 10px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-    }
-    button:hover, .btn-link:hover {
-      opacity: 0.85;
-    }
-    .event-details {
-      margin-top: 2rem;
+    .map {
+      flex: 1;
+      min-width: 300px;
+      height: 250px;
     }
     iframe {
       width: 100%;
-      border: 0;
+      height: 100%;
+      border: none;
       border-radius: 10px;
-      margin-top: 1rem;
+    }
+    .buttons {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .buttons a {
+      display: inline-block;
+      margin: 5px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+    }
+    .calendar-btn {
+      background-color: #ffb84d;
+    }
+    .upload-btn {
+      background-color: #4d4d4d;
+    }
+    .details, .intro, .gallery, .guestbook {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+    }
+    .intro {
+      text-align: center;
+    }
+    .intro img {
+      max-width: 220px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+    .gallery iframe {
+      width: 100%;
+      height: 500px;
+      border-radius: 10px;
+      border: none;
     }
     form {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
-      margin-top: 1rem;
     }
     input, textarea {
-      padding: 0.5rem;
+      margin: 5px 0;
+      padding: 10px;
       border-radius: 8px;
       border: 1px solid #ccc;
-      width: 100%;
     }
-    input[type="submit"] {
-      background: #f4a300;
+    button {
+      background-color: #ffb84d;
       color: white;
       border: none;
+      padding: 12px;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
     }
-    input[type="submit"]:hover {
-      opacity: 0.85;
-    }
-    .intro {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-    .intro img {
-      max-width: 220px;
-      border-radius: 15px;
-      flex-shrink: 0;
-    }
-    .intro p {
-      font-size: 1rem;
-      line-height: 1.5;
+    button:hover {
+      background-color: #e69500;
     }
   </style>
 </head>
 <body>
-  <header>PhD Defense</header>
+  <header>🎓 PhD Defense</header>
+
   <div class="container">
     <h1>Shaping Memories Upon Stress</h1>
-    <p><em>A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</em></p>
-    <p>Join my defense, see the photos, and sign the guestbook.</p>
+    <p style="text-align:center;"><em>A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</em></p>
 
-    <div class="countdown" id="countdown">
-      <div><span id="days"></span><br>days</div>
-      <div><span id="hours"></span><br>hours</div>
-      <div><span id="minutes"></span><br>min</div>
-      <div><span id="seconds"></span><br>sec</div>
+    <div class="countdown-container">
+      <!-- Countdown -->
+      <div class="countdown" id="countdown">
+        <div><span id="days"></span><br>days</div>
+        <div><span id="hours"></span><br>hours</div>
+        <div><span id="minutes"></span><br>min</div>
+        <div><span id="seconds"></span><br>sec</div>
+      </div>
+
+      <!-- Map -->
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.6111448936927!2d4.891045276660469!3d52.37046494962357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609bf547e3a81%3A0x69f9a4e0b199e64d!2sAgnietenkapel%2C%20University%20of%20Amsterdam!5e0!3m2!1sen!2snl!4v1692288000000!5m2!1sen!2snl" allowfullscreen></iframe>
+      </div>
     </div>
 
-    <a href="event.ics" class="btn-link">Add to Calendar (.ics)</a>
-    <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d"
-       target="_blank" class="btn-link">Upload Photos (Drive)</a>
-  </div>
+    <!-- Buttons -->
+    <div class="buttons">
+      <a href="event.ics" class="calendar-btn">Add to Calendar (.ics)</a>
+      <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d" target="_blank" class="upload-btn">Upload Photos (Drive)</a>
+    </div>
 
-  <div class="container event-details">
-    <h2>Event Details</h2>
-    <p><b>PhD Candidate:</b> Jeniffer Sanguino Gomez</p>
-    <p><b>Title:</b> Shaping memories upon stress – A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</p>
-    <p><b>Date:</b> Friday, September 26, 2025 at 1:00 PM</p>
-    <p><b>Location:</b> University of Amsterdam, Agnietenkapel</p>
+    <!-- Event Details -->
+    <div class="details">
+      <h2>Event Details</h2>
+      <p><strong>PhD Candidate:</strong> Jeniffer Sanguino Gomez</p>
+      <p><strong>Title:</strong> Shaping memories upon stress – A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</p>
+      <p><strong>Date:</strong> Friday, September 26, 2025 at 1:00 PM</p>
+      <p><strong>Location:</strong> University of Amsterdam, Agnietenkapel</p>
+    </div>
 
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.123456!2d4.8936!3d52.3728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609c123456789%3A0xabcdef!2sAgnietenkapel!5e0!3m2!1sen!2snl!4v0000000000000"
-      width="600" height="450" allowfullscreen="" loading="lazy">
-    </iframe>
-  </div>
+    <!-- Intro -->
+    <div class="intro">
+      <img src="background/IMG_20250818_185427.jpg" alt="Jen">
+      <p>✨ Hi, I’m Jen! ✨<br>
+      After 6 (!) years of failed experiments, countless visits to Paris, long lab hours (even on weekends), crazy experiments but also getting to know so many amazing people, I finally managed to finish my PhD! This journey has been full of challenges, growth, and unforgettable memories. Whether you join on-site or from far away, I’d love for you to pass by, leave your mark, and help me create a beautiful memory of this adventure. 💛</p>
+    </div>
 
-  <!-- Intro Section -->
-  <div class="container intro">
-    <img src="background/IMG_20250818_185427.jpg" alt="Jeniffer Sanguino Gomez">
-    <p>
-      <b>Hi, I'm Jen!</b> After 6(!) years of failed experiments, visits to Paris, crazy setups, 
-      and most importantly, meeting a lot of amazing people, I managed to finish my PhD.  
-      Whether you join on site or from far away, pass by, leave your mark, 
-      and help me create a nice memory of this adventure!
-    </p>
-  </div>
+    <!-- Gallery -->
+    <div class="gallery">
+      <h2>Photo Gallery</h2>
+      <p>Upload your favorite memory pictures in this <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d" target="_blank">Google Drive folder</a>. 📸</p>
+      <iframe src="https://drive.google.com/embeddedfolderview?id=1plug11j40-uFWPTEp6U-2XKbLoOZB01d#grid"></iframe>
+    </div>
 
-  <div class="container">
-    <h2>Photos</h2>
-    <p class="text-sm mt-1">
-      Upload your favorite memory photos to this
-      <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d"
-         target="_blank" rel="noopener"
-         class="underline" style="color:#f4a300">
-        Google Drive folder
-      </a>.
-    </p>
-
-    <iframe 
-      src="https://drive.google.com/embeddedfolderview?id=1plug11j40-uFWPTEp6U-2XKbLoOZB01d#grid"
-      width="100%" height="400">
-    </iframe>
-  </div>
-
-  <div class="container">
-    <h2>Guestbook</h2>
-    <form action="https://formspree.io/f/mjkozpzq" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
-      <textarea name="message" rows="4" placeholder="Your message" required></textarea>
-      <input type="submit" value="Send Message">
-    </form>
+    <!-- Guestbook -->
+    <div class="guestbook">
+      <h2>Guestbook</h2>
+      <form action="https://formspree.io/f/mjkozpzq" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <textarea name="message" placeholder="Leave your message..." rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
   </div>
 
   <script>
-    // Countdown Timer
-    const eventDate = new Date("September 26, 2025 13:00:00").getTime();
-    const countdown = document.getElementById("countdown");
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-
-    function updateCountdown() {
+    const countdown = () => {
+      const eventDate = new Date("September 26, 2025 13:00:00").getTime();
       const now = new Date().getTime();
-      const distance = eventDate - now;
-      if (distance < 0) {
-        countdown.innerHTML = "Event has started!";
-        return;
-      }
-      daysEl.innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-      hoursEl.innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      minutesEl.innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      secondsEl.innerText = Math.floor((distance % (1000 * 60)) / 1000);
-    }
-    setInterval(updateCountdown, 1000);
+      const diff = eventDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+    };
+    setInterval(countdown, 1000);
   </script>
 </body>
 </html>
-
