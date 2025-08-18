@@ -4,151 +4,139 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shaping Memories Upon Stress – PhD Defense</title>
-    <meta name="description" content="Countdown, event details, guestbook and a live photo carousel for my PhD defense." />
+    <meta name="description" content="Countdown, event details and a guestbook anyone can sign for my PhD defense." />
     <meta property="og:title" content="Shaping Memories Upon Stress – PhD Defense" />
-    <meta property="og:description" content="Join my PhD defense, sign the guestbook and see the live photo carousel." />
+    <meta property="og:description" content="Join my PhD defense, sign the guestbook and share your photos." />
     <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="theme-color" content="#f4a300" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>">
 
     <style>
-      /* Background image */
+      /* Background */
       body{
         background: url('background/sunset-field.jpeg') no-repeat center center fixed;
         background-size: cover;
+        color: #4d4d4d;
       }
-      /* Readable “glass” cards */
-      .bg-white\/70{ background-color: rgba(255,255,255,0.85); backdrop-filter: blur(4px); }
-      .dark\:bg-slate-800\/60{ background-color: rgba(30,41,59,0.85); backdrop-filter: blur(4px); }
 
-      /* Countdown cards */
-      .countdown-card{ background-color: rgba(15,23,42,0.85); backdrop-filter: blur(4px); }
+      /* Cards */
+      .card{
+        background: rgba(255,255,255,.85);
+        backdrop-filter: blur(4px);
+        border-radius: 1.5rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,.12);
+        border: 1px solid rgba(0,0,0,.06);
+      }
 
-      /* Carousel */
-      .carousel-viewport{
-        position: relative; overflow: hidden; border-radius: 1rem;
-      }
-      .carousel-track{
-        display: flex; gap: 1rem; transition: transform .5s ease; will-change: transform;
-      }
-      .carousel-slide{
-        position: relative; flex: 0 0 100%; height: 320px; border-radius: 1rem; overflow: hidden;
-      }
-      @media (min-width: 768px){
-        .carousel-slide{ height: 420px; }
-      }
-      .carousel-slide img{
-        width: 100%; height: 100%; object-fit: cover; display: block;
-      }
-      .carousel-btn{
-        position: absolute; top: 50%; transform: translateY(-50%);
-        background: rgba(0,0,0,.5); color: #fff; border: none; padding: .6rem .8rem;
-        border-radius: .75rem; cursor: pointer;
-      }
-      .carousel-btn:hover{ background: rgba(0,0,0,.65); }
-      .carousel-prev{ left: .5rem; }
-      .carousel-next{ right: .5rem; }
+      h1,h2,h3,h4,h5,h6, p, span, li, a, small, strong{ color:#4d4d4d; }
 
-      /* Lightbox */
-      .lightbox{
-        position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
-        background: rgba(0,0,0,.85); z-index: 50; padding: 2rem;
+      /* Orange buttons */
+      .btn-orange{
+        background:#f4a300;
+        color:#fff !important;
+        padding:.6rem 1rem;
+        border-radius: .9rem;
+        box-shadow: 0 6px 14px rgba(244,163,0,.35);
+        transition: transform .05s ease, background .2s ease;
       }
-      .lightbox.open{ display: flex; }
-      .lightbox img{ max-width: 100%; max-height: 100%; object-fit: contain; border-radius: .5rem; }
-      .lightbox-close{
-        position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,.2);
-        color: #fff; border: none; padding: .5rem .75rem; border-radius: .5rem; cursor: pointer;
+      .btn-orange:hover{ background:#e59400; }
+      .btn-orange:active{ transform: translateY(1px); }
+
+      /* Gray button */
+      .btn-gray{
+        background:#4d4d4d;
+        color:#fff !important;
+        padding:.6rem 1rem;
+        border-radius: .9rem;
+        box-shadow: 0 6px 14px rgba(77,77,77,.25);
       }
+      .btn-gray:hover{ background:#3f3f3f; }
+
+      /* Countdown blocks = dark gray */
+      .countdown-card{
+        background: #4d4d4d;
+        color:#fff;
+        border-radius: 1rem;
+        padding:1rem;
+        text-align:center;
+      }
+
+      .map-wrap{ overflow:hidden; border-radius:1.5rem; }
+
+      input[type="text"], input[type="email"], textarea{
+        background: rgba(255,255,255,.9);
+        border:1px solid rgba(0,0,0,.12);
+        border-radius: .9rem;
+        padding:.75rem;
+        width:100%;
+        color:#4d4d4d;
+      }
+      label span{ color:#4d4d4d; }
+
+      .container{ max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+      .section{ margin-top: 2.5rem; }
     </style>
   </head>
-  <body class="text-slate-800 dark:text-slate-100 min-h-screen">
-    <header class="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between">
+
+  <body class="min-h-screen">
+    <header class="container py-6 flex items-center justify-between">
       <h1 class="text-xl font-semibold">PhD Defense</h1>
-      <button id="themeToggle" class="px-3 py-2 rounded-xl text-sm bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow">
-        Theme
-      </button>
     </header>
 
-    <main class="max-w-5xl mx-auto px-4 pb-20">
+    <main class="container pb-20">
       <!-- Hero + countdown -->
-      <section class="rounded-3xl p-8 md:p-12 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+      <section class="card p-8 md:p-12">
         <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
           <div class="flex-1">
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Shaping Memories Upon Stress</h2>
-            <p class="mt-2 italic text-slate-600 dark:text-slate-300">
+            <p class="mt-2 italic">
               A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory
             </p>
-            <p class="mt-4 text-slate-600 dark:text-slate-300">
+            <p class="mt-4">
               Join my defense, sign the guestbook and share your photos.
             </p>
+
             <div class="mt-6 flex flex-wrap items-center gap-3">
-              <a id="addToCalendar" href="#" class="px-4 py-2 rounded-xl bg-sky-600 text-white shadow hover:bg-sky-700">Add to Calendar (.ics)</a>
-              <a id="uploadLink" target="_blank" rel="noopener" class="px-4 py-2 rounded-xl bg-slate-900 text-white shadow hover:bg-slate-700">Upload Photos (PR)</a>
+              <a id="addToCalendar" href="#" class="btn-orange">Add to Calendar (.ics)</a>
+              <a id="uploadLink" target="_blank" rel="noopener" class="btn-gray">Upload Photos (PR)</a>
             </div>
-            <p class="mt-3 text-xs text-slate-500">Photos are stored in this GitHub repository via Pull Request.</p>
+
+            <p class="mt-3 text-xs opacity-80">Photos are stored in this GitHub repository via Pull Request.</p>
           </div>
 
           <div class="w-full md:w-auto">
             <div id="countdown" data-datetime="2025-09-26T13:00:00+02:00" class="grid grid-cols-4 gap-2 text-center">
-              <div class="countdown-card rounded-2xl text-white p-4"><div id="dd" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">days</div></div>
-              <div class="countdown-card rounded-2xl text-white p-4"><div id="hh" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">hours</div></div>
-              <div class="countdown-card rounded-2xl text-white p-4"><div id="mm" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">min</div></div>
-              <div class="countdown-card rounded-2xl text-white p-4"><div id="ss" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">sec</div></div>
+              <div class="countdown-card"><div id="dd" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">days</div></div>
+              <div class="countdown-card"><div id="hh" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">hours</div></div>
+              <div class="countdown-card"><div id="mm" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">min</div></div>
+              <div class="countdown-card"><div id="ss" class="text-3xl font-bold">--</div><div class="text-xs opacity-80">sec</div></div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Event details + map -->
-      <section class="mt-10 grid md:grid-cols-3 gap-6">
-        <div class="md:col-span-2 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+      <section class="section grid md:grid-cols-3 gap-6">
+        <div class="card p-6 md:col-span-2">
           <h3 class="text-xl font-semibold">Event Details</h3>
-          <ul class="mt-3 space-y-2 text-slate-700 dark:text-slate-300">
+          <ul class="mt-3 space-y-2">
             <li><strong>PhD Candidate:</strong> Jeniffer Sanguino Gomez</li>
             <li><strong>Title:</strong> Shaping memories upon stress – A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</li>
             <li><strong>Date:</strong> <span id="eventDateLabel"></span></li>
             <li><strong>Location:</strong> Agnietenkapel – University of Amsterdam, Oudezijds Voorburgwal 229-231, Amsterdam</li>
           </ul>
         </div>
-        <div class="rounded-3xl overflow-hidden bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+        <div class="card map-wrap">
           <iframe title="Map" width="100%" height="100%" style="min-height:220px" loading="lazy"
             src="https://www.google.com/maps?q=Agnietenkapel%20University%20of%20Amsterdam%20Oudezijds%20Voorburgwal%20229-231%20Amsterdam&output=embed"></iframe>
         </div>
       </section>
 
-      <!-- Drive Photo Carousel -->
-      <section class="mt-10 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
-        <div class="flex items-baseline justify-between gap-2">
-          <h3 class="text-xl font-semibold">Photo Carousel</h3>
-          <small class="text-slate-500">Uploads: Google Drive folder</small>
-        </div>
-
-        <!-- Carousel viewport -->
-        <div class="carousel-viewport mt-4">
-          <div id="carouselTrack" class="carousel-track"></div>
-          <button class="carousel-btn carousel-prev" id="btnPrev" aria-label="Previous">‹</button>
-          <button class="carousel-btn carousel-next" id="btnNext" aria-label="Next">›</button>
-        </div>
-
-        <!-- Lightbox -->
-        <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
-          <button id="lightboxClose" class="lightbox-close" aria-label="Close">✕</button>
-          <img id="lightboxImg" alt="Photo" />
-        </div>
-
-        <!-- Fallback (no API): show folder grid — uncomment to use -->
-        <!--
-        <iframe src="https://drive.google.com/embeddedfolderview?id=1plug11j40-uFWPTEp6U-2XKbLoOZB01d#grid"
-                style="width:100%; height:480px; border:0; margin-top:1rem;"></iframe>
-        -->
-      </section>
-
-      <!-- Guestbook (Formspree, no login) -->
-      <section class="mt-10 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+      <!-- Guestbook -->
+      <section class="section card p-6">
         <h3 class="text-xl font-semibold mb-2">Guestbook</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">No login needed. Leave a short message for Jeniffer.</p>
+        <p class="text-sm">No login needed. Leave a short message for Jeniffer.</p>
 
         <form id="guestbook" action="https://formspree.io/f/mjkozpzq" method="POST" class="mt-4 space-y-4">
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
@@ -157,47 +145,40 @@
           <div class="grid md:grid-cols-2 gap-4">
             <label class="block">
               <span class="text-sm">Your name</span>
-              <input required name="name" type="text" class="mt-1 w-full rounded-xl border border-slate-300 p-3 bg-white/80" placeholder="Name">
+              <input required name="name" type="text" placeholder="Name">
             </label>
             <label class="block">
               <span class="text-sm">Your email (optional)</span>
-              <input name="email" type="email" class="mt-1 w-full rounded-xl border border-slate-300 p-3 bg-white/80" placeholder="you@example.com">
+              <input name="email" type="email" placeholder="you@example.com">
             </label>
           </div>
 
           <label class="block">
             <span class="text-sm">Message</span>
-            <textarea required name="message" rows="4" class="mt-1 w-full rounded-xl border border-slate-300 p-3 bg-white/80" placeholder="Write your note..."></textarea>
+            <textarea required name="message" rows="4" placeholder="Write your note..."></textarea>
           </label>
 
           <div class="flex items-center justify-between gap-3">
-            <button type="submit" class="px-4 py-2 rounded-xl bg-sky-600 text-white shadow hover:bg-sky-700">Send message</button>
-            <span id="formStatus" class="text-sm text-slate-500"></span>
+            <button type="submit" class="btn-orange">Send message</button>
+            <span id="formStatus" class="text-sm opacity-80"></span>
           </div>
         </form>
       </section>
+
+      <footer class="section text-center text-xs opacity-80">
+        Made with GitHub Pages. Customize freely.
+      </footer>
     </main>
 
     <script>
-      /* ----------------------------
-         Config
-      ----------------------------- */
-      const GH_OWNER = "jsanguinogomez";
-      const GH_REPO  = "shapingmemoriesuponstress.github.io";
+      const GH_OWNER  = "jsanguinogomez";
+      const GH_REPO   = "shapingmemoriesuponstress.github.io";
       const GH_BRANCH = "main";
       const GALLERY_PATH = "gallery";
-      const DRIVE_FOLDER_ID = "1plug11j40-uFWPTEp6U-2XKbLoOZB01d";
-      const DRIVE_API_KEY = "PUT_YOUR_GOOGLE_API_KEY_HERE"; // <— replace this
 
-      /* ----------------------------
-         Upload link for GitHub PRs
-      ----------------------------- */
       const uploadUrl = `https://github.com/${GH_OWNER}/${GH_REPO}/upload/${GH_BRANCH}/${GALLERY_PATH}`;
-      (document.getElementById("uploadLink")||{}).href = uploadUrl;
+      document.getElementById("uploadLink").href = uploadUrl;
 
-      /* ----------------------------
-         Countdown + event label
-      ----------------------------- */
       const cd = document.getElementById('countdown');
       const target = new Date(cd.dataset.datetime);
       const dd = document.getElementById('dd');
@@ -218,9 +199,6 @@
       }
       tick(); setInterval(tick, 1000);
 
-      /* ----------------------------
-         Add-to-calendar (.ics)
-      ----------------------------- */
       document.getElementById('addToCalendar').addEventListener('click', (e) => {
         e.preventDefault();
         const dtStart = target.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
@@ -239,25 +217,6 @@
         document.body.appendChild(a); a.click(); URL.revokeObjectURL(url); a.remove();
       });
 
-      /* ----------------------------
-         Theme toggle
-      ----------------------------- */
-      const root = document.documentElement;
-      function applyTheme(initial=false){
-        const pref = localStorage.getItem('theme');
-        if (pref === 'dark' || (!pref && window.matchMedia('(prefers-color-scheme: dark)').matches)) root.classList.add('dark');
-        else root.classList.remove('dark');
-      }
-      applyTheme(true);
-      document.getElementById('themeToggle').addEventListener('click', () => {
-        const nowDark = !root.classList.contains('dark');
-        localStorage.setItem('theme', nowDark ? 'dark' : 'light');
-        applyTheme();
-      });
-
-      /* ----------------------------
-         Guestbook submit (Formspree)
-      ----------------------------- */
       const form = document.getElementById('guestbook');
       const status = document.getElementById('formStatus');
       form.addEventListener('submit', async (e) => {
@@ -274,130 +233,13 @@
             status.textContent = 'Thanks for your message!';
           } else {
             const data = await res.json().catch(()=>({}));
-            status.textContent = data?.errors ? data.errors.map(x=>x.message).join(', ') : 'Something went wrong. Please try again.';
+            status.textContent = data?.errors ? data.errors.map(x=>x.message).join(', ') : 'Something went wrong.';
           }
         } catch {
           status.textContent = 'Network error. Please try again.';
         }
         setTimeout(()=> status.textContent = '', 5000);
       });
-
-      /* ----------------------------
-         Google Drive carousel
-         - Make sure your folder share is: Anyone with link → Viewer
-         - Put your Google API key in DRIVE_API_KEY
-         - We fetch images and build a simple carousel with autoplay
-      ----------------------------- */
-      const track = document.getElementById('carouselTrack');
-      const btnPrev = document.getElementById('btnPrev');
-      const btnNext = document.getElementById('btnNext');
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      const lightboxClose = document.getElementById('lightboxClose');
-
-      let slideIndex = 0;
-      let slides = [];
-      let autoplayTimer = null;
-
-      async function loadDriveImages(){
-        if (!DRIVE_API_KEY || DRIVE_API_KEY.startsWith("PUT_")){
-          console.warn("Add your Google API key to DRIVE_API_KEY.");
-          return;
-        }
-
-        const url = new URL('https://www.googleapis.com/drive/v3/files');
-        const q = `'${DRIVE_FOLDER_ID}' in parents and mimeType contains 'image/' and trashed = false`;
-        url.searchParams.set('q', q);
-        url.searchParams.set('fields', 'files(id,name,mimeType)');
-        url.searchParams.set('pageSize', '1000');
-        url.searchParams.set('key', DRIVE_API_KEY);
-
-        let res;
-        try {
-          res = await fetch(url.toString());
-        } catch(e){
-          console.error(e);
-          return;
-        }
-        if (!res.ok){
-          console.error('Drive API error', res.status);
-          return;
-        }
-        const data = await res.json();
-        const files = (data.files || []).map(f => ({
-          id: f.id,
-          name: f.name,
-          src: `https://drive.google.com/uc?id=${f.id}`
-        }));
-
-        if (files.length === 0){
-          track.innerHTML = '<p class="text-sm text-slate-500">No photos yet.</p>';
-          return;
-        }
-        buildSlides(files);
-        startAutoplay();
-      }
-
-      function buildSlides(files){
-        track.innerHTML = '';
-        slides = files;
-        files.forEach((f, i) => {
-          const slide = document.createElement('div');
-          slide.className = 'carousel-slide';
-          const img = document.createElement('img');
-          img.src = f.src; img.alt = f.name; img.loading = 'lazy';
-          img.addEventListener('click', () => openLightbox(f.src));
-          slide.appendChild(img);
-          track.appendChild(slide);
-        });
-        slideIndex = 0;
-        updateTrack();
-      }
-
-      function updateTrack(){
-        const offset = -slideIndex * track.clientWidth;
-        track.style.transform = `translateX(${offset}px)`;
-      }
-
-      function nextSlide(){
-        if (slides.length === 0) return;
-        slideIndex = (slideIndex + 1) % slides.length;
-        updateTrack();
-      }
-      function prevSlide(){
-        if (slides.length === 0) return;
-        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-        updateTrack();
-      }
-
-      function startAutoplay(){
-        stopAutoplay();
-        autoplayTimer = setInterval(nextSlide, 4000);
-      }
-      function stopAutoplay(){
-        if (autoplayTimer){ clearInterval(autoplayTimer); autoplayTimer = null; }
-      }
-
-      function openLightbox(src){
-        stopAutoplay();
-        lightboxImg.src = src;
-        lightbox.classList.add('open');
-      }
-      function closeLightbox(){
-        lightbox.classList.remove('open');
-        lightboxImg.src = '';
-        startAutoplay();
-      }
-
-      // Controls
-      btnNext.addEventListener('click', () => { nextSlide(); startAutoplay(); });
-      btnPrev.addEventListener('click', () => { prevSlide(); startAutoplay(); });
-      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-      lightboxClose.addEventListener('click', closeLightbox);
-      window.addEventListener('resize', updateTrack);
-
-      loadDriveImages();
     </script>
   </body>
 </html>
-
