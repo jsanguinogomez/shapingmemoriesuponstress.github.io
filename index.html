@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shaping Memories Upon Stress – PhD Defense</title>
-    <meta name="description" content="Countdown, event details, and a guestbook anyone can sign for my PhD defense." />
+    <meta name="description" content="Countdown, event details, guestbook and a live photo carousel for my PhD defense." />
     <meta property="og:title" content="Shaping Memories Upon Stress – PhD Defense" />
-    <meta property="og:description" content="Join my PhD defense, sign the guestbook, and share your photos." />
+    <meta property="og:description" content="Join my PhD defense, sign the guestbook and see the live photo carousel." />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0ea5e9" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,7 +18,6 @@
         background: url('background/sunset-field.jpeg') no-repeat center center fixed;
         background-size: cover;
       }
-
       /* Readable “glass” cards */
       .bg-white\/70{ background-color: rgba(255,255,255,0.85); backdrop-filter: blur(4px); }
       .dark\:bg-slate-800\/60{ background-color: rgba(30,41,59,0.85); backdrop-filter: blur(4px); }
@@ -26,11 +25,42 @@
       /* Countdown cards */
       .countdown-card{ background-color: rgba(15,23,42,0.85); backdrop-filter: blur(4px); }
 
-      /* Optional masonry if you add a gallery later */
-      .masonry{ column-count:1; column-gap:1rem; }
-      @media (min-width:640px){ .masonry{ column-count:2; } }
-      @media (min-width:1024px){ .masonry{ column-count:3; } }
-      .masonry-item{ break-inside:avoid; margin-bottom:1rem; }
+      /* Carousel */
+      .carousel-viewport{
+        position: relative; overflow: hidden; border-radius: 1rem;
+      }
+      .carousel-track{
+        display: flex; gap: 1rem; transition: transform .5s ease; will-change: transform;
+      }
+      .carousel-slide{
+        position: relative; flex: 0 0 100%; height: 320px; border-radius: 1rem; overflow: hidden;
+      }
+      @media (min-width: 768px){
+        .carousel-slide{ height: 420px; }
+      }
+      .carousel-slide img{
+        width: 100%; height: 100%; object-fit: cover; display: block;
+      }
+      .carousel-btn{
+        position: absolute; top: 50%; transform: translateY(-50%);
+        background: rgba(0,0,0,.5); color: #fff; border: none; padding: .6rem .8rem;
+        border-radius: .75rem; cursor: pointer;
+      }
+      .carousel-btn:hover{ background: rgba(0,0,0,.65); }
+      .carousel-prev{ left: .5rem; }
+      .carousel-next{ right: .5rem; }
+
+      /* Lightbox */
+      .lightbox{
+        position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+        background: rgba(0,0,0,.85); z-index: 50; padding: 2rem;
+      }
+      .lightbox.open{ display: flex; }
+      .lightbox img{ max-width: 100%; max-height: 100%; object-fit: contain; border-radius: .5rem; }
+      .lightbox-close{
+        position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,.2);
+        color: #fff; border: none; padding: .5rem .75rem; border-radius: .5rem; cursor: pointer;
+      }
     </style>
   </head>
   <body class="text-slate-800 dark:text-slate-100 min-h-screen">
@@ -51,7 +81,7 @@
               A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory
             </p>
             <p class="mt-4 text-slate-600 dark:text-slate-300">
-              Join my defense, sign the guestbook, and share your photos.
+              Join my defense, sign the guestbook and share your photos.
             </p>
             <div class="mt-6 flex flex-wrap items-center gap-3">
               <a id="addToCalendar" href="#" class="px-4 py-2 rounded-xl bg-sky-600 text-white shadow hover:bg-sky-700">Add to Calendar (.ics)</a>
@@ -88,16 +118,40 @@
         </div>
       </section>
 
-      <!-- Guestbook (no GitHub account needed) -->
-      <section class="mt-12 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
-        <h3 class="text-xl font-semibold mb-2">Guestbook</h3>
-        <p class="text-sm text-slate-600 dark:text-slate-400">Leave a short message for Jen.</p>
+      <!-- Drive Photo Carousel -->
+      <section class="mt-10 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+        <div class="flex items-baseline justify-between gap-2">
+          <h3 class="text-xl font-semibold">Photo Carousel</h3>
+          <small class="text-slate-500">Uploads: Google Drive folder</small>
+        </div>
 
-        <!-- Formspree guestbook -->
+        <!-- Carousel viewport -->
+        <div class="carousel-viewport mt-4">
+          <div id="carouselTrack" class="carousel-track"></div>
+          <button class="carousel-btn carousel-prev" id="btnPrev" aria-label="Previous">‹</button>
+          <button class="carousel-btn carousel-next" id="btnNext" aria-label="Next">›</button>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+          <button id="lightboxClose" class="lightbox-close" aria-label="Close">✕</button>
+          <img id="lightboxImg" alt="Photo" />
+        </div>
+
+        <!-- Fallback (no API): show folder grid — uncomment to use -->
+        <!--
+        <iframe src="https://drive.google.com/embeddedfolderview?id=1plug11j40-uFWPTEp6U-2XKbLoOZB01d#grid"
+                style="width:100%; height:480px; border:0; margin-top:1rem;"></iframe>
+        -->
+      </section>
+
+      <!-- Guestbook (Formspree, no login) -->
+      <section class="mt-10 rounded-3xl p-6 bg-white/70 dark:bg-slate-800/60 shadow ring-1 ring-slate-200/60 dark:ring-slate-700/50">
+        <h3 class="text-xl font-semibold mb-2">Guestbook</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-400">No login needed. Leave a short message for Jeniffer.</p>
+
         <form id="guestbook" action="https://formspree.io/f/mjkozpzq" method="POST" class="mt-4 space-y-4">
-          <!-- spam honeypot -->
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
-          <!-- email subject -->
           <input type="hidden" name="_subject" value="New guestbook entry">
 
           <div class="grid md:grid-cols-2 gap-4">
@@ -125,15 +179,25 @@
     </main>
 
     <script>
-      // Upload link (photos to /gallery via PR)
+      /* ----------------------------
+         Config
+      ----------------------------- */
       const GH_OWNER = "jsanguinogomez";
       const GH_REPO  = "shapingmemoriesuponstress.github.io";
       const GH_BRANCH = "main";
       const GALLERY_PATH = "gallery";
-      const uploadUrl = `https://github.com/${GH_OWNER}/${GH_REPO}/upload/${GH_BRANCH}/${GALLERY_PATH}`;
-      document.getElementById("uploadLink").href = uploadUrl;
+      const DRIVE_FOLDER_ID = "1plug11j40-uFWPTEp6U-2XKbLoOZB01d";
+      const DRIVE_API_KEY = "PUT_YOUR_GOOGLE_API_KEY_HERE"; // <— replace this
 
-      // Countdown + event label
+      /* ----------------------------
+         Upload link for GitHub PRs
+      ----------------------------- */
+      const uploadUrl = `https://github.com/${GH_OWNER}/${GH_REPO}/upload/${GH_BRANCH}/${GALLERY_PATH}`;
+      (document.getElementById("uploadLink")||{}).href = uploadUrl;
+
+      /* ----------------------------
+         Countdown + event label
+      ----------------------------- */
       const cd = document.getElementById('countdown');
       const target = new Date(cd.dataset.datetime);
       const dd = document.getElementById('dd');
@@ -154,7 +218,9 @@
       }
       tick(); setInterval(tick, 1000);
 
-      // Add-to-calendar (.ics)
+      /* ----------------------------
+         Add-to-calendar (.ics)
+      ----------------------------- */
       document.getElementById('addToCalendar').addEventListener('click', (e) => {
         e.preventDefault();
         const dtStart = target.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
@@ -173,7 +239,9 @@
         document.body.appendChild(a); a.click(); URL.revokeObjectURL(url); a.remove();
       });
 
-      // Theme toggle
+      /* ----------------------------
+         Theme toggle
+      ----------------------------- */
       const root = document.documentElement;
       function applyTheme(initial=false){
         const pref = localStorage.getItem('theme');
@@ -187,7 +255,9 @@
         applyTheme();
       });
 
-      // Guestbook submit (Formspree)
+      /* ----------------------------
+         Guestbook submit (Formspree)
+      ----------------------------- */
       const form = document.getElementById('guestbook');
       const status = document.getElementById('formStatus');
       form.addEventListener('submit', async (e) => {
@@ -211,6 +281,123 @@
         }
         setTimeout(()=> status.textContent = '', 5000);
       });
+
+      /* ----------------------------
+         Google Drive carousel
+         - Make sure your folder share is: Anyone with link → Viewer
+         - Put your Google API key in DRIVE_API_KEY
+         - We fetch images and build a simple carousel with autoplay
+      ----------------------------- */
+      const track = document.getElementById('carouselTrack');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+
+      let slideIndex = 0;
+      let slides = [];
+      let autoplayTimer = null;
+
+      async function loadDriveImages(){
+        if (!DRIVE_API_KEY || DRIVE_API_KEY.startsWith("PUT_")){
+          console.warn("Add your Google API key to DRIVE_API_KEY.");
+          return;
+        }
+
+        const url = new URL('https://www.googleapis.com/drive/v3/files');
+        const q = `'${DRIVE_FOLDER_ID}' in parents and mimeType contains 'image/' and trashed = false`;
+        url.searchParams.set('q', q);
+        url.searchParams.set('fields', 'files(id,name,mimeType)');
+        url.searchParams.set('pageSize', '1000');
+        url.searchParams.set('key', DRIVE_API_KEY);
+
+        let res;
+        try {
+          res = await fetch(url.toString());
+        } catch(e){
+          console.error(e);
+          return;
+        }
+        if (!res.ok){
+          console.error('Drive API error', res.status);
+          return;
+        }
+        const data = await res.json();
+        const files = (data.files || []).map(f => ({
+          id: f.id,
+          name: f.name,
+          src: `https://drive.google.com/uc?id=${f.id}`
+        }));
+
+        if (files.length === 0){
+          track.innerHTML = '<p class="text-sm text-slate-500">No photos yet.</p>';
+          return;
+        }
+        buildSlides(files);
+        startAutoplay();
+      }
+
+      function buildSlides(files){
+        track.innerHTML = '';
+        slides = files;
+        files.forEach((f, i) => {
+          const slide = document.createElement('div');
+          slide.className = 'carousel-slide';
+          const img = document.createElement('img');
+          img.src = f.src; img.alt = f.name; img.loading = 'lazy';
+          img.addEventListener('click', () => openLightbox(f.src));
+          slide.appendChild(img);
+          track.appendChild(slide);
+        });
+        slideIndex = 0;
+        updateTrack();
+      }
+
+      function updateTrack(){
+        const offset = -slideIndex * track.clientWidth;
+        track.style.transform = `translateX(${offset}px)`;
+      }
+
+      function nextSlide(){
+        if (slides.length === 0) return;
+        slideIndex = (slideIndex + 1) % slides.length;
+        updateTrack();
+      }
+      function prevSlide(){
+        if (slides.length === 0) return;
+        slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+        updateTrack();
+      }
+
+      function startAutoplay(){
+        stopAutoplay();
+        autoplayTimer = setInterval(nextSlide, 4000);
+      }
+      function stopAutoplay(){
+        if (autoplayTimer){ clearInterval(autoplayTimer); autoplayTimer = null; }
+      }
+
+      function openLightbox(src){
+        stopAutoplay();
+        lightboxImg.src = src;
+        lightbox.classList.add('open');
+      }
+      function closeLightbox(){
+        lightbox.classList.remove('open');
+        lightboxImg.src = '';
+        startAutoplay();
+      }
+
+      // Controls
+      btnNext.addEventListener('click', () => { nextSlide(); startAutoplay(); });
+      btnPrev.addEventListener('click', () => { prevSlide(); startAutoplay(); });
+      lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      lightboxClose.addEventListener('click', closeLightbox);
+      window.addEventListener('resize', updateTrack);
+
+      loadDriveImages();
     </script>
   </body>
 </html>
+
