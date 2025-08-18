@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,39 +24,44 @@
       max-width: 1200px;
       margin: 20px auto;
       padding: 20px;
-      background: rgba(255, 255, 255, 0.85);
-      border-radius: 15px;
     }
+
+    /* Title + Countdown */
     .title-countdown {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 20px;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 15px;
     }
-    h1 {
-      color: #4d4d4d;
-      margin: 0;
-    }
+    h1 { color: #4d4d4d; margin: 0; }
     .subtitle {
       font-style: italic;
-      margin: 5px 0 15px;
+      margin: 5px 0 0;
+      max-width: 500px;
+      line-height: 1.4;
+      white-space: pre-line; /* let the manual line break below render */
     }
-    .countdown {
-      display: flex;
-      gap: 15px;
-    }
+    .countdown { display: flex; gap: 15px; }
     .countdown div {
       background: #4d4d4d;
-      color: white;
+      color: #fff;
       padding: 15px;
       border-radius: 10px;
       text-align: center;
       min-width: 70px;
     }
+
+    /* Buttons row */
     .buttons {
       text-align: center;
       margin: 20px 0;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 15px;
+      border-radius: 15px;
     }
     .buttons a {
       display: inline-block;
@@ -65,14 +70,13 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
-      color: white;
+      color: #fff;
     }
-    .calendar-btn {
-      background-color: #ffb84d;
-    }
-    .upload-btn {
-      background-color: #4d4d4d;
-    }
+    .calendar-btn { background-color: #ffb84d; }  /* orange */
+    .upload-btn  { background-color: #4d4d4d; }  /* dark gray */
+    .rsvp-btn    { background-color: #4d4d4d; }  /* dark gray */
+
+    /* Event Details + Map */
     .details-map {
       display: flex;
       justify-content: space-between;
@@ -83,7 +87,7 @@
     }
     .details, .map {
       flex: 1;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.85);
       border-radius: 15px;
       padding: 15px;
     }
@@ -94,12 +98,14 @@
       border-radius: 10px;
       min-height: 300px;
     }
+
+    /* Intro */
     .intro {
       display: flex;
       align-items: center;
       gap: 20px;
       margin-top: 30px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.85);
       padding: 20px;
       border-radius: 15px;
     }
@@ -109,10 +115,14 @@
       border-radius: 50%;
       object-fit: cover;
     }
-    .intro-text {
-      flex: 1;
-      font-size: 1.1em;
-      line-height: 1.6;
+    .intro-text { flex: 1; font-size: 1.1em; line-height: 1.6; }
+
+    /* Gallery */
+    .gallery {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 15px;
     }
     .gallery iframe {
       width: 100%;
@@ -120,10 +130,15 @@
       border-radius: 10px;
       border: none;
     }
-    form {
-      display: flex;
-      flex-direction: column;
+
+    /* Guestbook */
+    .guestbook {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 20px;
+      border-radius: 15px;
     }
+    form { display: flex; flex-direction: column; }
     input, textarea {
       margin: 5px 0;
       padding: 10px;
@@ -132,16 +147,14 @@
     }
     button {
       background-color: #ffb84d;
-      color: white;
+      color: #fff;
       border: none;
       padding: 12px;
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
     }
-    button:hover {
-      background-color: #e69500;
-    }
+    button:hover { background-color: #e69500; }
   </style>
 </head>
 <body>
@@ -152,7 +165,10 @@
     <div class="title-countdown">
       <div>
         <h1>Shaping Memories Upon Stress</h1>
-        <p class="subtitle">A behavioral, cellular, synaptic and molecular perspective on glucocorticoid modulation of learning and memory</p>
+        <p class="subtitle">
+A behavioral, cellular, synaptic and molecular perspective
+on glucocorticoid modulation of learning and memory
+        </p>
       </div>
       <div class="countdown" id="countdown">
         <div><span id="days"></span><br>days</div>
@@ -165,7 +181,9 @@
     <!-- Buttons -->
     <div class="buttons">
       <a href="event.ics" class="calendar-btn">Add to Calendar (.ics)</a>
-      <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d" target="_blank" class="upload-btn">Upload Photos (Drive)</a>
+      <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d" target="_blank" rel="noopener" class="upload-btn">Upload Photos (Drive)</a>
+      <a href="https://docs.google.com/forms/d/1sQsZ32Bi-m-J-yLhHOk75cTalBzZLtfnVfvg_m9wPLg/edit?ts=688b58c4#responses"
+         target="_blank" rel="noopener" class="rsvp-btn">RSVP</a>
     </div>
 
     <!-- Event Details + Map -->
@@ -188,7 +206,7 @@
       <div class="intro-text">
         <p>✨ Hi, I’m Jen! ✨</p>
         <p>
-          After 6 (!) years of failed experiments, countless visits to Paris, long lab hours (even on weekends), crazy experiments but also getting to know so many amazing people, I finally managed to finish my PhD! This journey has been full of challenges, growth, and unforgettable memories. Whether you join on-site or from far away, I’d love for you to pass by, leave your mark, and help me create a beautiful memory of this adventure. 💛
+          After 6 (!) years of failed experiments, countless visits to Paris, long lab hours (even on weekends), crazy experiments but also getting to know so many amazing people, I finally managed to finish my PhD! This journey has been full of challenges, growth and unforgettable memories. Whether you join on-site or from far away, I’d love for you to pass by, leave your mark and help me create a beautiful memory of this adventure. 💛
         </p>
       </div>
     </div>
@@ -196,7 +214,7 @@
     <!-- Gallery -->
     <div class="gallery">
       <h2>Photo Gallery</h2>
-      <p>Upload your favorite memory pictures in this <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d" target="_blank">Google Drive folder</a>. 📸</p>
+      <p>Upload your favorite memory pictures in this <a href="https://drive.google.com/drive/folders/1plug11j40-uFWPTEp6U-2XKbLoOZB01d" target="_blank" rel="noopener">Google Drive folder</a>. 📸</p>
       <iframe src="https://drive.google.com/embeddedfolderview?id=1plug11j40-uFWPTEp6U-2XKbLoOZB01d#grid"></iframe>
     </div>
 
