@@ -119,15 +119,17 @@
     .submit:hover{ background:var(--orange-hover); }
 
     /* Mobile tweaks */
-  @media (max-width:600px){
+@media (max-width:600px){
+  /* HERO */
   .hero {
-    grid-template-columns: 1fr; /* stack content and countdown */
+    grid-template-columns: 1fr; /* stack left + right */
     text-align: center;
   }
 
   h1 {
     font-size: 32px;
     text-align: center;
+    white-space: normal; /* allow wrapping on phones */
   }
 
   .countdown {
@@ -138,11 +140,12 @@
 
   .actions {
     justify-content: center;   /* center buttons */
-    flex-wrap: nowrap;         /* keep them in one row */
-    overflow-x: auto;          /* if too narrow, allow side scroll instead of wrapping */
-    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    flex-wrap: nowrap;         /* force all 3 buttons in one line */
+    overflow-x: auto;          /* if too narrow, allow sideways scroll */
+    -webkit-overflow-scrolling: touch;
   }
 
+  /* EVENT DETAILS + INTRO collapse into single column */
   .grid-2 { 
     grid-template-columns:1fr; 
   }
@@ -156,6 +159,7 @@
     justify-self:start; 
   }
 }
+
   </style>
 </head>
 <body>
