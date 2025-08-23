@@ -1,4 +1,4 @@
-<!DOCTYPE html>     
+<!DOCTYPE html>  
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -24,10 +24,15 @@
     }
 
     header{
-      max-width:1100px; margin:24px auto; padding:0 16px;
-      font-weight:700; color:var(--ink);   font-size: 24px;   /* bigger */
-  line-height: 1.2;
+      max-width:1100px;
+      margin:24px auto;
+      padding:0 16px;
+      font-weight:700;
+      color:var(--ink);
+      font-size:24px;   /* bigger */
+      line-height:1.2;
     }
+
     .wrap{ max-width:900px; margin:0 auto; padding:0 16px 48px; }
 
     .card{
@@ -43,21 +48,46 @@
 
     .hero{
       display:grid;
-      grid-template-columns:2fr 1fr;
+      grid-template-columns:2fr min-content; /* left wide, right only as wide as countdown */
       gap:28px;
-       align-items: end; /* align bottom of left and right */
+      align-items:end; /* aligns subtitle and countdown */
     }
- font-size: 44px;     /* force max size */
-  white-space: nowrap; /* prevent breaking */
+
+    /* Big title */
+    h1 {
+      margin:0 0 10px;
+      font-size:48px;
+      line-height:1.1;
+      color:var(--ink);
+      white-space:nowrap; /* keep on one line desktop */
+    }
+
+    /* Subtitle */
+    .subtitle{
+      margin:0;
+      font-style:italic;
+      line-height:1.5;
+      color:#5e5e5e;
+    }
+    .subtitle .br{ display:block; }
+    .extra-sub{ margin-top:10px; font-weight:500; color:var(--ink); }
+
     .countdown{
-      display:flex; gap:12px; align-items:center; justify-content:flex-end; flex-wrap:wrap;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:flex-end;
+      flex-wrap:nowrap; /* force in one row */
     }
     .tbox{
-      background:var(--charcoal); color:#fff;
-      border-radius:16px; padding:12px 14px; text-align:center; min-width: auto; /* remove fixed width */
-  display: inline-block; /* shrink-wrap to content */
-}
-    .tbox .num{ font-size:34px; font-weight:800; line-height:1; }
+      background:var(--charcoal);
+      color:#fff;
+      border-radius:16px;
+      padding:14px 16px;
+      text-align:center;
+      display:inline-block; /* shrink to fit content */
+    }
+    .tbox .num{ font-size:36px; font-weight:800; line-height:1; }
     .tbox .lab{ font-size:12px; opacity:.9; margin-top:4px; }
 
     .actions{ display:flex; gap:12px; flex-wrap:nowrap; margin-top:18px; }
@@ -90,9 +120,14 @@
     .submit{ background:var(--orange); color:#fff; padding:12px 16px; border-radius:12px; font-weight:700; }
     .submit:hover{ background:var(--orange-hover); }
 
-    @media (max-width:900px){
+    /* Mobile tweaks */
+    @media (max-width:600px){
+      h1 {
+        font-size:32px;
+        white-space:normal; /* allow wrap on small screens */
+      }
       .hero{ grid-template-columns:1fr; }
-      .countdown{ justify-content:flex-start; }
+      .countdown{ justify-content:flex-start; flex-wrap:wrap; }
       .grid-2{ grid-template-columns:1fr; }
       .intro{ grid-template-columns:1fr; text-align:left; }
       .intro img{ justify-self:start; }
