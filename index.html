@@ -46,13 +46,12 @@
       margin-top:28px;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:2fr min-content; /* left wide, right only as wide as countdown */
-      gap:28px;
-      align-items:end; /* aligns subtitle and countdown */
+    .hero {
+      display: grid;
+      grid-template-columns: 2fr 1fr; /* left gets 2/3, right gets 1/3 */
+      gap: 28px;
+      align-items: center; /* vertically align countdown to middle of left content */
     }
-
     /* Big title */
     h1 {
       margin:0 0 10px;
@@ -73,21 +72,20 @@
     .extra-sub{ margin-top:10px; font-weight:500; color:var(--ink); }
 
     .countdown{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:flex-end;
-      flex-wrap:nowrap; /* force in one row */
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    flex-wrap: nowrap; /* keep in one row */
     }
     .tbox{
       background:var(--charcoal);
       color:#fff;
       border-radius:16px;
-      padding:14px 16px;
+      padding:12px 14px;
       text-align:center;
       display:inline-block; /* shrink to fit content */
     }
-    .tbox .num{ font-size:36px; font-weight:800; line-height:1; }
+    .tbox .num{ font-size:34px; font-weight:800; line-height:1; }
     .tbox .lab{ font-size:12px; opacity:.9; margin-top:4px; }
 
     .actions{ display:flex; gap:12px; flex-wrap:nowrap; margin-top:18px; }
