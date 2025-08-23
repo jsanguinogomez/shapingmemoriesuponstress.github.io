@@ -244,26 +244,50 @@
   </main>
 
   <script>
-    const target = new Date("September 26, 2025 13:00:00").getTime();
-    const dd = document.getElementById('dd');
-    const hh = document.getElementById('hh');
-    const mm = document.getElementById('mm');
-    const ss = document.getElementById('ss');
-    const pad = n => String(n).padStart(2,'0');
+  const target = new Date("September 26, 2025 13:00:00").getTime();
+  const dd = document.getElementById('dd');
+  const hh = document.getElementById('hh');
+  const mm = document.getElementById('mm');
+  const ss = document.getElementById('ss');
+  const pad = n => String(n).padStart(2,'0');
 
-    function tick(){
-      const now = Date.now();
-      const diff = Math.max(0, target - now);
-      const d = Math.floor(diff/86400000);
-      const h = Math.floor((diff%86400000)/3600000);
-      const m = Math.floor((diff%3600000)/60000);
-      const s = Math.floor((diff%60000)/1000);
+  function tick(){
+    const now = Date.now();
+    const diff = target - now;
+
+    if (diff <= 0) {
+      // Event has passed → show days since defense
+      const past = now - target;
+      const d = Math.floor(past / 86400000); // days since
       dd.textContent = d;
-      hh.textContent = pad(h);
-      mm.textContent = pad(m);
-      ss.textContent = pad(s);
+      hh.textContent = "–";
+      mm.textContent = "–";
+      ss.textContent = "–";
+
+      // Change subtitle text above countdown
+      const subtitle = document.querySelector(".extra-sub");
+      if (subtitle) {
+        subtitle.textContent = "🎉 Defense completed! Days since defense:";
+      }
+
+      clearInterval(timer);
+      return;
     }
-    tick(); setInterval(tick,1000);
-  </script>
+
+    // Event not yet happened → normal countdown
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+
+    dd.textContent = d;
+    hh.textContent = pad(h);
+    mm.textContent = pad(m);
+    ss.textContent = pad(s);
+  }
+
+  tick();
+  const timer = setInterval(tick,1000);
+</script>
 </body>
 </html>
