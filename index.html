@@ -42,9 +42,9 @@
 
     .hero{
       display:grid;
-      grid-template-columns:1fr auto;
+      grid-template-columns:2fr 1fr;
       gap:28px;
-      align-items:center;
+      align-items:start;
     }
     h1{ margin:0 0 10px; font-size:clamp(28px,4vw,44px); line-height:1.1; color:var(--ink); }
     .subtitle{
@@ -58,8 +58,9 @@
     }
     .tbox{
       background:var(--charcoal); color:#fff;
-      border-radius:16px; padding:10px 12px; text-align:center; min-width:70px;
-    }
+      border-radius:16px; padding:10px 12px; text-align:center; min-width: auto; /* remove fixed width */
+  display: inline-block; /* shrink-wrap to content */
+}
     .tbox .num{ font-size:28px; font-weight:800; line-height:1; }
     .tbox .lab{ font-size:12px; opacity:.9; margin-top:4px; }
 
