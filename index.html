@@ -25,7 +25,8 @@
 
     header{
       max-width:1100px; margin:24px auto; padding:0 16px;
-      font-weight:700; color:var(--ink);
+      font-weight:700; color:var(--ink);   font-size: 24px;   /* bigger */
+  line-height: 1.2;
     }
     .wrap{ max-width:900px; margin:0 auto; padding:0 16px 48px; }
 
@@ -44,24 +45,19 @@
       display:grid;
       grid-template-columns:2fr 1fr;
       gap:28px;
-      align-items:start;
+       align-items: end; /* align bottom of left and right */
     }
-    h1{ margin:0 0 10px; font-size:clamp(28px,4vw,44px); line-height:1.1; color:var(--ink); }
-    .subtitle{
-      margin:0; font-style:italic; line-height:1.5; color:#5e5e5e;
-    }
-    .subtitle .br{ display:block; }
-    .extra-sub{ margin-top:10px; font-weight:500; color:var(--ink); }
-
+ font-size: 44px;     /* force max size */
+  white-space: nowrap; /* prevent breaking */
     .countdown{
       display:flex; gap:12px; align-items:center; justify-content:flex-end; flex-wrap:wrap;
     }
     .tbox{
       background:var(--charcoal); color:#fff;
-      border-radius:16px; padding:10px 12px; text-align:center; min-width: auto; /* remove fixed width */
+      border-radius:16px; padding:12px 14px; text-align:center; min-width: auto; /* remove fixed width */
   display: inline-block; /* shrink-wrap to content */
 }
-    .tbox .num{ font-size:28px; font-weight:800; line-height:1; }
+    .tbox .num{ font-size:34px; font-weight:800; line-height:1; }
     .tbox .lab{ font-size:12px; opacity:.9; margin-top:4px; }
 
     .actions{ display:flex; gap:12px; flex-wrap:nowrap; margin-top:18px; }
