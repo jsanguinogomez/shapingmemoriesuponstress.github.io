@@ -121,11 +121,16 @@
     /* Mobile tweaks */
     @media (max-width:600px){
       h1 {
-        font-size:28px;
-        white-space:normal; /* allow wrap on small screens */
+        font-size:32px;
+        white-space:center; /* allow wrap on small screens */
       }
-      .hero{ grid-template-columns:1fr; }
-      .countdown{ justify-content:flex-start; flex-wrap:wrap; }
+      .hero{ grid-template-columns: 1fr; /* stack content and countdown */
+    text-align: center;}
+      .countdown{ justify-content:center; flex-wrap:nowrap;margin-top: 16px; }
+       .actions { justify-content: center; 
+        flex-wrap: wrap;        /* allow buttons to stack if space is tight */
+      } 
+          
       .grid-2{ grid-template-columns:1fr; }
       .intro{ grid-template-columns:1fr; text-align:left; }
       .intro img{ justify-self:start; }
