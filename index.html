@@ -48,14 +48,14 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 2fr auto; /
+      grid-template-columns: minmax(0, 65%) 1fr; 
       gap: 28px;
       align-items: center; /* vertically align countdown to middle of left content */
     }
     /* Big title */
     h1 {
       margin:0 0 10px;
-      font-size:40px;
+      font-size:36px;
       line-height:1.1;
       color:var(--ink);
       white-space:nowrap; /* keep on one line desktop */
