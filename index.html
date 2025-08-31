@@ -1,4 +1,4 @@
-<html lang="en">       
+<html lang="en">      
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,6 +43,8 @@
       -webkit-backdrop-filter:saturate(120%) blur(6px);
       padding:28px;
       margin-top:28px;
+      /* NEW: keep rounded corners clean on mobile */
+      overflow:hidden;
     }
 
     .hero {
@@ -51,7 +53,7 @@
       gap: 28px;
       align-items: center; /* vertically align countdown to middle of left content */
     }
-    /* Big title */
+
     h1 {
       margin:0 0 10px;
       font-size:36px;
@@ -60,7 +62,6 @@
       white-space:nowrap; /* keep on one line desktop */
     }
 
-    /* Subtitle */
     .subtitle{
       margin:0;
       font-style:italic;
@@ -100,17 +101,12 @@
     .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
     iframe{ width:100%; height:100%; min-height:320px; border:0; border-radius:20px; }
 
-    /* Special fix for Spotify iframe */
+    /* Spotify override so it doesn’t inherit the tall min-height */
     .spotify {
       width: 100%;
       border-radius: 12px;
       height: 220px !important;
       min-height: 0 !important;
-    }
-    @media (max-width:600px){
-      .spotify {
-        height: 180px !important;
-      }
     }
 
     .intro{ display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center; }
@@ -132,11 +128,7 @@
 
     /* Mobile tweaks */
 @media (max-width:600px){
-  /* HERO */
-  .hero {
-    grid-template-columns: 1fr; /* stack left + right */
-    text-align: center;
-  }
+  .hero { grid-template-columns: 1fr; text-align: center; }
 
   h1 {
     font-size: 32px;
@@ -145,33 +137,28 @@
   }
 
   .countdown {
-    justify-content: center;   /* center horizontally */
-    flex-wrap: nowrap;         /* keep all 4 boxes in one row */
+    justify-content: center;
+    flex-wrap: nowrap;
     margin-top: 16px;
   }
 
+  /* NEW: let buttons wrap on phones so the card doesn't stretch */
   .actions {
-    justify-content: center;   /* center buttons */
-    flex-wrap: nowrap;         /* force all 3 buttons in one line */
-    overflow-x: auto;          /* if too narrow, allow sideways scroll */
-    -webkit-overflow-scrolling: touch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow: visible; /* no inner scrolling needed once we wrap */
   }
 
-  /* EVENT DETAILS + INTRO collapse into single column */
-  .grid-2 { 
-    grid-template-columns:1fr; 
-  }
+  .grid-2 { grid-template-columns:1fr; }
 
-  .intro { 
-    grid-template-columns:1fr; 
-    text-align:left; 
-  }
+  .intro { grid-template-columns:1fr; text-align:left; }
 
-  .intro img { 
-    justify-self:start; 
-  }
+  .intro img { justify-self:start; }
+
+  /* Smaller Spotify on phones */
+  .spotify { height: 180px !important; }
 }
-
   </style>
 </head>
 <body>
@@ -288,6 +275,34 @@
     if (diff <= 0) {
       // Event has passed → show days since defense
       const past = now - target;
-      const d = Math.floor(past / 86400000); // days since
+      const d = Math.floor(past / 86400000);
       dd.textContent = d;
       hh.textContent = "–";
+      mm.textContent = "–";
+      ss.textContent = "–";
+
+      const subtitle = document.querySelector(".extra-sub");
+      if (subtitle) {
+        subtitle.textContent = "🎉 Defense completed! Days since defense:";
+      }
+
+      clearInterval(timer);
+      return;
+    }
+
+    const d = Math.floor(diff/86400000);
+    const h = Math.floor((diff%86400000)/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+
+    dd.textContent = d;
+    hh.textContent = pad(h);
+    mm.textContent = pad(m);
+    ss.textContent = pad(s);
+  }
+
+  tick();
+  const timer = setInterval(tick,1000);
+</script>
+</body>
+</html>
